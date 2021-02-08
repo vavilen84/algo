@@ -3,24 +3,23 @@ package merge_sort
 func MergeSort(input []int) []int {
 	l := len(input)
 	if l == 1 {
+		// length validation
 		return input
 	}
+	// divide slice into 2 pieces
 	middleIdx := l / 2
-	left := make([]int, middleIdx)
-	right := make([]int, l-middleIdx)
-	for i := 0; i < l; i++ {
-		if i < middleIdx {
-			left[i] = input[i]
-		} else {
-			right[i-middleIdx] = input[i]
-		}
-	}
+	left := input[:middleIdx]
+	right := input[middleIdx:]
+
+	// recursive merge
 	return Merge(MergeSort(left), MergeSort(right))
 }
 
 func Merge(left, right []int) []int {
 	result := make([]int, len(left)+len(right))
 	i := 0
+	// create new slice using key-by-key comparison left & right slices
+	// Initial calls left & right slices are 1 int length, then - grow
 	for (len(left) > 0) && (len(right) > 0) {
 		if left[0] < right[0] {
 			result[i] = left[0]
