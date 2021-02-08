@@ -19,7 +19,6 @@ func Merge(left, right []int) []int {
 	result := make([]int, len(left)+len(right))
 	i := 0
 	// create new slice using key-by-key comparison left & right slices
-	// Initial calls left & right slices are 1 int length, then - grow
 	for (len(left) > 0) && (len(right) > 0) {
 		if left[0] < right[0] {
 			result[i] = left[0]
